@@ -26,8 +26,8 @@ class ApiResponseController extends Controller implements ApiResponseInterface
             'message' => $error,
         ];
 
-        if (!empty($errorMessage)) {
-            $response['data'] = $errorMessage;
+        if (!empty($errorMessages)) {
+            $response['data'] = $errorMessages;
         }
 
         return response()->json($response, $code);
