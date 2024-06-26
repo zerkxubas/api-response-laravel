@@ -1,0 +1,43 @@
+{
+    "name": "zerkxubas/api-response-laravel",
+    "description": "This package can be usefull to structure our api response in laravel api projects, its simple and easy to use.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Zerkxubas\\ApiResponseLaravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Subash Sharma",
+            "email": "zerkxubas@gmail.com"
+        }
+    ],
+    "keywords": [
+        "php",
+        "laravel",
+        "api",
+        "response",
+        "api response",
+        "status code",
+        "nepal"
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.2"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zerkxubas\\ApiResponseLaravel\\Providers\\ApiResponseServiceProvider"
+            ],
+            "aliases": {
+                "StatusCode": "Zerkxubas\\ApiResponseLaravel\\StatusCode"
+            }
+        }
+    }
+}
