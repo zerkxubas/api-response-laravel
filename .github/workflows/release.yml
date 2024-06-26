@@ -29,15 +29,19 @@ jobs:
       run: |
         git fetch --tags
     
-        tag_count=$(git tag -l | wc -l)
-        if [ "$tag_count" -eq 0 ]; then
+         # Get the latest tag
+        latest_tag=$(git tag -l --sort=-v:refname | head -n 1)
+        if [ -z "$latest_tag" ]; then
           new_version="v1.0.0"
         else
-          current_version=$(git describe --tags `git rev-list --tags --max-count=1`)
-          current_version=$(echo "$current_version" | sed 's/v//')
+          # Strip 'v' prefix if exists
+          current_version=${latest_tag#v}
           IFS='.' read -r major minor patch <<< "$current_version"
-          new_version="v$((major)).$((minor)).$((patch + 1))"
+          new_version="v$major.$minor.$((patch + 1))"
         fi
+    
+        echo "New version: $new_version"
+        echo "new_version=$new_version" >> $GITHUB_ENV 
     
         git tag $new_version
         git push origin $new_version
