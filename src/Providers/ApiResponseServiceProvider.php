@@ -13,8 +13,8 @@ final class ApiResponseServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/apiresponse.php' => config_path('apiresponse.php'),
-        ], 'apiresponse');        
+            __DIR__.'/../../config/apiresponse.php' => config_path('apiresponse.php'),
+        ], 'apiresponse');
     }
 
     public function register()
